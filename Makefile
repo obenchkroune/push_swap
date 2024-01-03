@@ -2,10 +2,15 @@ CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror -Iinclude
 NAME	=	push_swap
 
-SRC		=	$(wildcard sources/*.c)
+SRC		=	sources/errrors.c sources/main.c sources/operations.c \
+			sources/push.c sources/rotate_a.c sources/rotate_b.c sources/sort.c \
+			sources/swap.c sources/utils.c
 OBJ		=	$(patsubst sources/%.c, objects/%.o, $(SRC))
 
 LIBFT	=	libft/libft.a
+
+default:
+	@echo $(SRC)
 
 all: $(NAME)
 
