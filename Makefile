@@ -9,9 +9,6 @@ OBJ		=	$(patsubst sources/%.c, objects/%.o, $(SRC))
 
 LIBFT	=	libft/libft.a
 
-default:
-	@echo $(SRC)
-
 all: $(NAME)
 
 objects/%.o: sources/%.c
