@@ -20,9 +20,11 @@ $(NAME): $(OBJ) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
 clean:
+	make -C libft clean
 	rm -rf objects
 
 fclean: clean
+	make -C libft fclean
 	rm -rf $(NAME)
 
 re: fclean all
