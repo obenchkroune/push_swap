@@ -6,7 +6,7 @@
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 17:16:20 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/03 02:17:03 by obenchkr         ###   ########.fr       */
+/*   Updated: 2024/01/06 02:21:33 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ void	check_errors(char **av);
 
 // sorting
 void	sort_3(t_stack *stack_a);
-void	sort_4_plus(t_stack *a, t_stack *b);
+void	merge_sort(t_stack *a, t_stack *b);
 
 #endif

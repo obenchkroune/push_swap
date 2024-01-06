@@ -6,12 +6,28 @@
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 00:50:28 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/03 01:58:39 by obenchkr         ###   ########.fr       */
+/*   Updated: 2024/01/06 02:39:22 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <limits.h>
+
+int	get_max(t_stack *stack)
+{
+	int	max;
+	int	i;
+
+	max = stack->array[0];
+	i = 0;
+	while (i < stack->size)
+	{
+		if (stack->array[i] > max)
+			max = stack->array[i];
+		i++;
+	}
+	return (max);
+}
 
 static int	get_min(t_stack *stack)
 {
@@ -40,7 +56,7 @@ static int	get_pos(t_stack *stack, int nbr)
 			return (idx);
 		idx++;
 	}
-	return (-1);
+	return (0);
 }
 
 void	sort_3(t_stack *stack_a)
@@ -70,24 +86,42 @@ void	sort_3(t_stack *stack_a)
 		rra(stack_a);
 }
 
-void	sort_4_plus(t_stack *a, t_stack *b)
+int	get_median(t_stack *stack)
 {
-	int	min;
-	int	pos;
+	int		min;
+	int		max;
+	int		median;
+	int		i;
+	int		j;
 
+	min = get_min(stack);
+	max = get_max(stack);
+	i = 0;
+	while (i < stack->size)
+	{
+		if (stack->array[i] > max && stack->array[i] < min)
+			max = stack->array[i];
+		i++;
+	}
+	median = (min + max) / 2;
+	j = get_pos(stack, median);
+	return (j);
+}
+
+void	merge_sort(t_stack *a, t_stack *b)
+{
+	int	median;
+
+	median = get_median(a);
 	while (a->size > 3)
 	{
-		min = get_min(a);
-		pos = get_pos(a, min);
-		if (pos == -1)
-			exit(EXIT_FAILURE);
-		if (pos < a->size / 2)
-			while (a->array[0] != min)
-				ra(a);
+		if (a->array[0] > median)
+		{
+			pb(a, b);
+			rb(b);
+		}
 		else
-			while (a->array[0] != min)
-				rra(a);
-		pb(a, b);
+			pb(a, b);
 	}
 	sort_3(a);
 	while (b->size > 0)
@@ -101,5 +135,5 @@ void	do_sort(t_stack *a, t_stack *b)
 	else if (a->size == 3)
 		sort_3(a);
 	else
-		sort_4_plus(a, b);
+		merge_sort(a, b);
 }

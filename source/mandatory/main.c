@@ -6,11 +6,26 @@
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 23:29:09 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/03 02:22:30 by obenchkr         ###   ########.fr       */
+/*   Updated: 2024/01/06 02:41:53 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
+
+void	print_stack(t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	printf("==================\n");
+	while (i < stack->size)
+	{
+		printf("- %d\n", stack->array[i]);
+		i++;
+	}
+	printf("==================\n");
+}
 
 int	main(int ac, char **av)
 {
@@ -27,6 +42,7 @@ int	main(int ac, char **av)
 	init_stacks(&a, &b, numbers);
 	if (!is_sorted(a))
 		do_sort(a, b);
+	print_stack(a);
 	cleanup(a, b, numbers);
 	return (0);
 }

@@ -1,29 +1,29 @@
-CC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror -Iinclude
-NAME	=	push_swap
+CC			=	gcc
+CFLAGS		=	-Wall -Wextra -Werror -Iinclude
+NAME		=	push_swap
 
-SRC		=	sources/errrors.c sources/main.c sources/operations.c \
-			sources/push.c sources/rotate_a.c sources/rotate_b.c sources/sort.c \
-			sources/swap.c sources/utils.c
-OBJ		=	$(patsubst sources/%.c, objects/%.o, $(SRC))
+SRC_FILES	=	errrors.c main.c operations.c push.c rotate_a.c rotate_b.c sort.c swap.c utils.c
 
-LIBFT	=	libft/libft.a
+SRC			=	$(addprefix ./source/mandatory/, $(SRC_FILES))
+OBJ			=	$(SRC:.c=.o)
+
+LIBFT		=	libft/libft.a
+LIBS		=	-Llibft -lft
 
 all: $(NAME)
 
-objects/%.o: sources/%.c
-	@mkdir -p objects
+.c.o:
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(LIBFT):
 	make -C libft all
 
 $(NAME): $(OBJ) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LIBS)
 
 clean:
 	make -C libft clean
-	rm -rf objects
+	rm -f $(OBJ)
 
 fclean: clean
 	make -C libft fclean
