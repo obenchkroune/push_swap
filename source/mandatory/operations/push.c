@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_b.c                                         :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/03 01:29:07 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/03 01:29:55 by obenchkr         ###   ########.fr       */
+/*   Created: 2024/01/07 10:58:03 by obenchkr          #+#    #+#             */
+/*   Updated: 2024/01/07 10:58:09 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rb(t_stack *b)
+void	pa(t_stack *a, t_stack *b)
 {
-	rotate(b);
-	ft_putendl_fd("rb", STDOUT_FILENO);
+	push(b, a);
+	write(1, "pa\n", 3);
 }
 
-void	rrb(t_stack *b)
+void	pb(t_stack *a, t_stack *b)
 {
-	reverse_rotate(b);
-	ft_putendl_fd("rrb", STDOUT_FILENO);
+	push(a, b);
+	write(1, "pb\n", 3);
 }

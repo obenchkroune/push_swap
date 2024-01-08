@@ -5,93 +5,92 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/02 23:31:25 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/03 02:16:41 by obenchkr         ###   ########.fr       */
+/*   Created: 2024/01/07 10:53:31 by obenchkr          #+#    #+#             */
+/*   Updated: 2024/01/07 15:31:38 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <limits.h>
 
-int	array_size(char **arr)
+int	get_median(t_stack *stack)
 {
-	int	count;
+	int	median;
+	int	*sorted;
 
-	count = 0;
-	while (arr[count] != NULL)
-	{
-		count++;
-	}
-	return (count);
+	sorted = sort_arr(stack);
+	median = sorted[stack->size / 2];
+	free(sorted);
+	return (median);
 }
 
-void	init_stacks(t_stack **a, t_stack **b, char **numbers)
+static void	ft_swap(int *a, int *b)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	int		i;
+	int	temp;
 
-	stack_a = malloc(sizeof(t_stack));
-	stack_b = malloc(sizeof(t_stack));
-	if (!stack_a || !stack_b)
-		exit(EXIT_FAILURE);
-	stack_a->size = array_size(numbers);
-	stack_a->array = malloc(sizeof(int) * stack_a->size);
-	stack_b->size = 0;
-	stack_b->array = malloc(sizeof(int) * stack_a->size);
-	if (!stack_a->array || !stack_b->array)
-		exit(EXIT_FAILURE);
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+int	*sort_arr(t_stack *stack)
+{
+	int	*sorted;
+	int	i;
+
+	sorted = malloc(sizeof(int) * stack->size);
+	if (!sorted)
+		return (NULL);
 	i = 0;
-	while (numbers[i] != NULL)
+	while (i < stack->size)
 	{
-		stack_a->array[i] = ft_atoi(numbers[i]);
+		sorted[i] = stack->array[i];
 		i++;
 	}
-	*a = stack_a;
-	*b = stack_b;
-}
-
-void	cleanup(t_stack *a, t_stack *b, char **numbers)
-{
-	int	i;
-
-	free(a->array);
-	free(b->array);
-	free(a);
-	free(b);
-	i = 0;
-	while (numbers[i] != NULL)
-		free(numbers[i++]);
-	free(numbers);
-}
-
-void	fill_numbers(char ***n_ptr, int ac, char **av)
-{
-	int	i;
-	int	j;
-
-	if (ac == 2)
-		*n_ptr = ft_split(av[1], ' ');
-	else
-	{
-		i = 0;
-		j = 1;
-		*n_ptr = malloc(sizeof(char *) * ac);
-		while (av[j] != NULL)
-			(*n_ptr)[i++] = ft_strdup(av[j++]);
-		(*n_ptr)[i] = NULL;
-	}
-}
-
-bool	is_sorted(t_stack *stack)
-{
-	int	i;
-
 	i = 0;
 	while (i < stack->size - 1)
 	{
-		if (stack->array[i] > stack->array[i + 1])
-			return (false);
+		if (sorted[i] > sorted[i + 1])
+		{
+			ft_swap(&sorted[i], &sorted[i + 1]);
+			i = 0;
+		}
+		else
+			i++;
+	}
+	return (sorted);
+}
+
+int	get_min(t_stack *stack)
+{
+	int	min;
+	int	i;
+
+	min = INT_MAX;
+	i = 0;
+	while (i < stack->size)
+	{
+		if (stack->array[i] < min)
+			min = stack->array[i];
 		i++;
 	}
-	return (true);
+	return (min);
+}
+
+int	get_max(t_stack *stack)
+{
+	int	max;
+	int	i;
+
+	if (stack->size == 0)
+		return (INT_MAX);
+	max = stack->array[0];
+	i = 0;
+	while (i < stack->size)
+	{
+		if (stack->array[i] > max)
+			max = stack->array[i];
+		i++;
+	}
+	return (max);
 }

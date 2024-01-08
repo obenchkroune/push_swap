@@ -1,14 +1,13 @@
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra -Werror -Iinclude
+CFLAGS		=	-Werror -Iinclude
 NAME		=	push_swap
 
-SRC_FILES	=	errrors.c main.c operations.c push.c rotate_a.c rotate_b.c sort.c swap.c utils.c
-
-SRC			=	$(addprefix ./source/mandatory/, $(SRC_FILES))
+SRC			=	./source/mandatory/performance.c ./source/mandatory/push_swap.c ./source/mandatory/sort.c ./source/mandatory/swap.c ./source/mandatory/utils.c ./source/mandatory/operations/moves.c ./source/mandatory/operations/push.c ./source/mandatory/operations/reverse_rotate.c ./source/mandatory/operations/rotate.c
 OBJ			=	$(SRC:.c=.o)
 
 LIBFT		=	libft/libft.a
 LIBS		=	-Llibft -lft
+
 
 all: $(NAME)
 

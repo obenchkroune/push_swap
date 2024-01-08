@@ -1,16 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/03 01:23:00 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/03 02:16:00 by obenchkr         ###   ########.fr       */
+/*   Created: 2024/01/07 10:53:18 by obenchkr          #+#    #+#             */
+/*   Updated: 2024/01/07 10:57:55 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	swap(t_stack *stack)
+{
+	int	temp;
+
+	if (stack->size < 2)
+		return ;
+	temp = stack->array[0];
+	stack->array[0] = stack->array[1];
+	stack->array[1] = temp;
+}
 
 void	rotate(t_stack *stack)
 {

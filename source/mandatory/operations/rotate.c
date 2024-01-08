@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_a.c                                         :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/03 01:28:43 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/03 01:29:40 by obenchkr         ###   ########.fr       */
+/*   Created: 2024/01/07 10:56:56 by obenchkr          #+#    #+#             */
+/*   Updated: 2024/01/07 10:57:06 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,18 @@
 void	ra(t_stack *a)
 {
 	rotate(a);
-	ft_putendl_fd("ra", STDOUT_FILENO);
+	write(1, "ra\n", 3);
 }
 
-void	rra(t_stack *a)
+void	rb(t_stack *b)
 {
-	reverse_rotate(a);
-	ft_putendl_fd("rra", STDOUT_FILENO);
+	rotate(b);
+	write(1, "rb\n", 3);
+}
+
+void	rr(t_stack *a, t_stack *b)
+{
+	rotate(a);
+	rotate(b);
+	write(1, "rr\n", 3);
 }
