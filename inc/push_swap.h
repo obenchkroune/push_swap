@@ -6,7 +6,7 @@
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:22:33 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/10 13:15:35 by obenchkr         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:38:19 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <limits.h>
 # include <stdarg.h>
 
-# define ROTATIONS_CONST 10
+# define ROTATIONS_CONST 20
 
 typedef struct s_stack
 {

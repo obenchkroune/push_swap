@@ -6,31 +6,11 @@
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:15:17 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/10 13:03:04 by obenchkr         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:46:22 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	check_duplicate(char **nbrs)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (nbrs[i])
-	{
-		j = i + 1;
-		while (nbrs[j])
-		{
-			if (ft_strncmp(nbrs[i], nbrs[j], 12) == 0)
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
 
 int	is_valid_number(char *nbr)
 {
@@ -39,6 +19,8 @@ int	is_valid_number(char *nbr)
 	i = 0;
 	if (nbr[i] == '-' || nbr[i] == '+')
 		i++;
+	if (!nbr[i])
+		return (0);
 	while (nbr[i])
 	{
 		if (!ft_isdigit(nbr[i]))
@@ -46,6 +28,28 @@ int	is_valid_number(char *nbr)
 		i++;
 	}
 	return (1);
+}
+
+int	check_duplicate(char **nbrs)
+{
+	int	i;
+	int	j;
+	int	is_valid;
+
+	i = 0;
+	while (nbrs[i])
+	{
+		j = i + 1;
+		while (nbrs[j])
+		{
+			is_valid = (is_valid_number(nbrs[i]) && is_valid_number(nbrs[i]));
+			if (is_valid && ft_atoi(nbrs[i]) == ft_atoi(nbrs[j]))
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
 int	check_int_overflow(char *nbr)
@@ -75,9 +79,11 @@ void	check_errors(char **nbrs)
 	int	err;
 
 	err = 0;
+	i = 0;
+	if (!nbrs || !nbrs[0])
+		err = 1;
 	if (check_duplicate(nbrs))
 		err = 1;
-	i = 0;
 	while (nbrs[i])
 	{
 		if (check_int_overflow(nbrs[i]) || !is_valid_number(nbrs[i]))
