@@ -6,7 +6,7 @@
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 15:18:46 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/10 10:43:47 by obenchkr         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:16:10 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	sort_big(t_stack *a, t_stack *b)
 	if (!is_sorted(a))
 		sort_3(a);
 	while (b->size > 0)
-		sort_push_a(a, b);
+		rotate_push_a(a, b);
 	ra_cost = get_ra_cost(a, b);
 	rra_cost = get_rra_cost(a, b);
 	while (get_min(a) != get_head(a))

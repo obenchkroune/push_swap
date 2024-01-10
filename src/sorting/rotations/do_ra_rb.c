@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_position.c                                   :+:      :+:    :+:   */
+/*   do_ra_rb.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 16:42:14 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/10 12:49:02 by obenchkr         ###   ########.fr       */
+/*   Created: 2024/01/10 12:16:59 by obenchkr          #+#    #+#             */
+/*   Updated: 2024/01/10 12:46:51 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_position(t_stack *a, t_stack *b)
+void	do_ra_rb(t_stack *a, t_stack *b, int *rotations)
 {
-	int	min;
-	int	max;
-	int	head;
-	int	tail;
+	int	ra_moves;
+	int	rb_moves;
 
-	min = get_min(a);
-	max = get_max(a);
-	head = get_head(a);
-	tail = get_tail(a);
-	if ((b->arr[0] > max && head == min) || \
-		(b->arr[0] < min && head == min) \
-		|| (b->arr[0] < head && b->arr[0] > tail))
+	ra_moves = rotations[0];
+	rb_moves = rotations[1];
+	while (ra_moves > 0 && rb_moves > 0)
 	{
-		return (1);
+		rr(a, b);
+		ra_moves--;
+		rb_moves--;
 	}
-	return (0);
+	while (ra_moves > 0)
+	{
+		ra(a);
+		ra_moves--;
+	}
+	while (rb_moves > 0)
+	{
+		rb(b);
+		rb_moves--;
+	}
 }

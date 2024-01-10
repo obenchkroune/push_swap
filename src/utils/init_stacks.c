@@ -6,7 +6,7 @@
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 15:00:08 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/10 11:05:51 by obenchkr         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:49:28 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	init_stacks(t_stack **stack_a, t_stack **stack_b, char **numbers)
 	t_stack	*b;
 	int		size;
 
+	a = NULL;
+	b = NULL;
 	size = ft_tabsize(numbers);
 	a = malloc_check(malloc(sizeof(t_stack)), a, b, 1);
 	b = malloc_check(malloc(sizeof(t_stack)), a, b, 1);
