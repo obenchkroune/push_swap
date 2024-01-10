@@ -2,7 +2,7 @@ CC			=	gcc
 CFLAGS		=	-Werror -Iinc -g -fsanitize=address
 NAME		=	push_swap
 
-SRC			=	$(shell find ./src -type f -name *.c)
+SRC			=	./src/errors.c ./src/sort.c ./src/sorting/costs/get_ra_rb_cost.c ./src/sorting/costs/get_rra_rrb_cost.c ./src/sorting/costs/get_ra_cost.c ./src/sorting/costs/get_ra_rrb.c ./src/sorting/costs/get_rra_cost.c ./src/sorting/check_median_push_b.c ./src/sorting/check_position.c ./src/sorting/sort_push_a.c ./src/instructions/rotate.c ./src/instructions/swap.c ./src/instructions/reverse_rotate.c ./src/instructions/push.c ./src/instructions/helpers.c ./src/utils/cost_utils.c ./src/utils/error_handlers.c ./src/utils/sort_utils.c ./src/utils/init_stacks.c ./src/utils/cleanup.c ./src/helpers.c ./src/main.c
 OBJ			=	$(SRC:.c=.o)
 
 LIBFT		=	libft/libft.a
