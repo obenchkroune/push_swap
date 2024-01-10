@@ -6,7 +6,7 @@
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:56:19 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/10 13:16:28 by obenchkr         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:17:05 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	main(int argc, int argv)
 	parse_numbers(&numbers, argc, argv);
 	check_errors(numbers);
 	init_stacks(&a, &b, numbers);
-	run_instructions(a, b, numbers);
+	// run_instructions(a, b, numbers);
 	if (is_sorted(a) && b->size == 0)
 		ft_putendl_fd("OK", 1);
 	else
