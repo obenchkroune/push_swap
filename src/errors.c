@@ -6,7 +6,7 @@
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:15:17 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/10 11:44:06 by obenchkr         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:03:04 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	check_errors(char **nbrs)
 	if (err)
 	{
 		free_2d_tab(nbrs);
-		ft_putendl_fd("Error", 1);
+		ft_putendl_fd("Error", 2);
 		exit(1);
 	}
 }
