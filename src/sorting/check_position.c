@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   check_position.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 23:40:45 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/09 07:23:12 by obenchkr         ###   ########.fr       */
+/*   Created: 2024/01/09 16:42:14 by obenchkr          #+#    #+#             */
+/*   Updated: 2024/01/09 17:48:56 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_putendl_fd(char *s, int fd)
+int	check_position(t_stack *a, t_stack *b)
 {
-	if (!s)
-		return ;
-	ft_putstr_fd(s, fd);
-	write(fd, "\n", 1);
+	int	min;
+	int	max;
+	int	head;
+	int	tail;
+
+	min = get_min(a);
+	max = get_max(a);
+	head = get_head(a);
+	tail = get_tail(a);
+	if ((b->arr[0] > max && head == min) || \
+		(b->arr[0] < min && head == min) \
+		|| b->arr[0] < head && b->arr[0] > tail)
+	{
+		return (1);
+	}
+	return (0);
 }

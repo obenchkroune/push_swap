@@ -1,8 +1,8 @@
 CC			=	gcc
-CFLAGS		=	-Werror -Iinclude
+CFLAGS		=	-Werror -Iinc -g -fsanitize=address
 NAME		=	push_swap
 
-SRC			=	./source/mandatory/performance.c ./source/mandatory/push_swap.c ./source/mandatory/sort.c ./source/mandatory/swap.c ./source/mandatory/utils.c ./source/mandatory/operations/moves.c ./source/mandatory/operations/push.c ./source/mandatory/operations/reverse_rotate.c ./source/mandatory/operations/rotate.c
+SRC			=	$(shell find ./src -type f -name *.c)
 OBJ			=	$(SRC:.c=.o)
 
 LIBFT		=	libft/libft.a
@@ -17,7 +17,7 @@ all: $(NAME)
 $(LIBFT):
 	make -C libft all
 
-$(NAME): $(OBJ) $(LIBFT)
+$(NAME): $(OBJ) $(LIBFT) ./inc/push_swap.h
 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LIBS)
 
 clean:

@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 23:40:45 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/09 07:23:12 by obenchkr         ###   ########.fr       */
+/*   Created: 2024/01/09 15:02:06 by obenchkr          #+#    #+#             */
+/*   Updated: 2024/01/10 11:18:33 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_putendl_fd(char *s, int fd)
+void	cleanup(t_stack *a, t_stack *b, char **nbrs)
 {
-	if (!s)
-		return ;
-	ft_putstr_fd(s, fd);
-	write(fd, "\n", 1);
+	int	i;
+
+	i = 0;
+	while (nbrs[i])
+		free(nbrs[i++]);
+	free(nbrs);
+	cleanup_stack(a);
+	cleanup_stack(b);
+}
+
+void	cleanup_stack(t_stack *stack)
+{
+	if (stack != NULL)
+	{
+		free(stack->arr);
+		stack->arr = NULL;
+		free(stack);
+		stack = NULL;
+	}
 }

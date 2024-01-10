@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   cost_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 23:40:45 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/09 07:23:12 by obenchkr         ###   ########.fr       */
+/*   Created: 2024/01/09 17:09:42 by obenchkr          #+#    #+#             */
+/*   Updated: 2024/01/09 18:56:00 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_putendl_fd(char *s, int fd)
+t_stack	*copy_stack(t_stack *stack)
 {
-	if (!s)
-		return ;
-	ft_putstr_fd(s, fd);
-	write(fd, "\n", 1);
+	t_stack	*result;
+	int		*arr;
+
+	result = malloc(sizeof(t_stack));
+	if (!result)
+		return (NULL);
+	arr = malloc(sizeof(int) * stack->max_size);
+	if (!arr)
+	{
+		free(result);
+		return (NULL);
+	}
+	ft_memmove(result, stack, sizeof(t_stack));
+	ft_memmove(arr, stack->arr, sizeof(int) * stack->size);
+	result->arr = arr;
+	return (result);
 }

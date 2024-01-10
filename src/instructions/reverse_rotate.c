@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 23:40:45 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/09 07:23:12 by obenchkr         ###   ########.fr       */
+/*   Created: 2024/01/09 15:39:05 by obenchkr          #+#    #+#             */
+/*   Updated: 2024/01/09 15:39:59 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_putendl_fd(char *s, int fd)
+void	rra(t_stack *a)
 {
-	if (!s)
-		return ;
-	ft_putstr_fd(s, fd);
-	write(fd, "\n", 1);
+	reverse_rotate(a);
+	ft_putendl_fd("rra", 1);
+}
+
+void	rrb(t_stack *b)
+{
+	reverse_rotate(b);
+	ft_putendl_fd("rrb", 1);
+}
+
+void	rrr(t_stack *a, t_stack *b)
+{
+	reverse_rotate(a);
+	reverse_rotate(b);
+	ft_putendl_fd("rrr", 1);
 }

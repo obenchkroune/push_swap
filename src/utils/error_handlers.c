@@ -1,21 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   error_handlers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 23:40:45 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/09 07:23:12 by obenchkr         ###   ########.fr       */
+/*   Created: 2024/01/09 15:01:19 by obenchkr          #+#    #+#             */
+/*   Updated: 2024/01/10 11:07:38 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_putendl_fd(char *s, int fd)
+void	cleanup_exit(t_stack *a, t_stack *b)
 {
-	if (!s)
-		return ;
-	ft_putstr_fd(s, fd);
-	write(fd, "\n", 1);
+	free(a);
+	free(a->arr);
+	free(b);
+	free(b->arr);
+	exit(1);
+}
+
+void	*malloc_check(void *ptr, t_stack *a, t_stack *b, int _exit)
+{
+	if (!ptr)
+	{
+		free(a);
+		free(a->arr);
+		free(b);
+		free(b->arr);
+		if (_exit)
+			exit(1);
+		return (NULL);
+	}
+	return (ptr);
 }

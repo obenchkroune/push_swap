@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   get_ra_cost.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 23:40:45 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/09 07:23:12 by obenchkr         ###   ########.fr       */
+/*   Created: 2024/01/09 16:21:09 by obenchkr          #+#    #+#             */
+/*   Updated: 2024/01/09 19:06:47 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_putendl_fd(char *s, int fd)
+int	get_ra_cost(t_stack *a, t_stack *b)
 {
-	if (!s)
-		return ;
-	ft_putstr_fd(s, fd);
-	write(fd, "\n", 1);
+	int		rotations;
+	t_stack	*a_copy;
+	t_stack	*b_copy;
+
+	a_copy = copy_stack(a);
+	b_copy = copy_stack(b);
+	rotations = 0;
+	while (!check_position(a_copy, b_copy))
+	{
+		rotate(a_copy);
+		rotations++;
+	}
+	cleanup_stack(a_copy);
+	cleanup_stack(b_copy);
+	return (rotations);
 }
