@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_numbers.c                                    :+:      :+:    :+:   */
+/*   cleanup_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 08:04:01 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/11 09:45:11 by obenchkr         ###   ########.fr       */
+/*   Created: 2024/01/11 10:01:16 by obenchkr          #+#    #+#             */
+/*   Updated: 2024/01/11 10:07:23 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-void	parse_numbers(char ***numbers, int ac, char **av)
+void	cleanup(t_stack *a, t_stack *b, char **nbrs)
 {
-	char	**result;
-	int		i;
+	int	i;
 
-	if (ac == 2)
-		result = ft_split(av[1], ' ');
-	else
+	i = 0;
+	while (nbrs[i])
+		free(nbrs[i++]);
+	free(nbrs);
+	cleanup_stack(a);
+	cleanup_stack(b);
+}
+
+void	cleanup_stack(t_stack *stack)
+{
+	if (stack != NULL)
 	{
-		result = malloc(sizeof(numbers) * ac);
-		if (!result)
-			exit(1);
-		i = 0;
-		while (i < ac - 1)
-		{
-			result[i] = ft_strdup(av[i + 1]);
-			i++;
-		}
-		result[i] = NULL;
+		free(stack->arr);
+		stack->arr = NULL;
+		free(stack);
+		stack = NULL;
 	}
-	*numbers = result;
 }

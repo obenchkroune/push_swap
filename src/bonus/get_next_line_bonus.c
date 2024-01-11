@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 08:08:38 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/11 09:32:53 by obenchkr         ###   ########.fr       */
+/*   Updated: 2024/01/11 10:07:31 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 #define BUFFER_SIZE 100
 
@@ -60,7 +60,7 @@ static int	read_from_fd(int fd, char **history)
 	char	buffer[BUFFER_SIZE];
 	int		bytes;
 	char	*temp;
-	
+
 	ft_bzero(buffer, BUFFER_SIZE * sizeof(char));
 	bytes = read(fd, buffer, BUFFER_SIZE - 1);
 	if (bytes < 0)

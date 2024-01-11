@@ -6,7 +6,7 @@
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 09:22:33 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/11 08:05:15 by obenchkr         ###   ########.fr       */
+/*   Updated: 2024/01/11 09:45:35 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ typedef struct s_costs
 	int	*ra_rrb_cost;
 	int	*rra_rrb_cost;
 }	t_costs;
-
-char	*get_next_line(int fd);
 
 void	pa(t_stack *a, t_stack *b);
 void	pb(t_stack *a, t_stack *b);

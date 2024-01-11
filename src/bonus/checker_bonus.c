@@ -6,66 +6,24 @@
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:56:19 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/11 09:33:18 by obenchkr         ###   ########.fr       */
+/*   Updated: 2024/01/11 10:07:16 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-void \
-execute_instruction(char *instruction, t_stack *a, t_stack *b, char **numbers)
+int	is_sorted(t_stack *stack)
 {
-	if (ft_strncmp(instruction, "ra\n", 3) == 0)
-		rotate(a);
-	else if (ft_strncmp(instruction, "rb\n", 3) == 0)
-		rotate(b);
-	else if (ft_strncmp(instruction, "rr\n", 3) == 0)
-	{
-		rotate(a);
-		rotate(b);
-	}
-	else if (ft_strncmp(instruction, "rra\n", 4) == 0)
-		reverse_rotate(a);
-	else if (ft_strncmp(instruction, "rrb\n", 4) == 0)
-		reverse_rotate(b);
-	else if (ft_strncmp(instruction, "rrr\n", 4) == 0)
-	{
-		reverse_rotate(a);
-		reverse_rotate(b);
-	}
-	else if (ft_strncmp(instruction, "sa\n", 3) == 0)
-		swap(a);
-	else if (ft_strncmp(instruction, "sb\n", 3) == 0)
-		swap(b);
-	else if (ft_strncmp(instruction, "ss\n", 3) == 0)
-	{
-		swap(a);
-		swap(b);
-	}
-	else if (ft_strncmp(instruction, "pa\n", 3) == 0)
-		push(a, b);
-	else if (ft_strncmp(instruction, "pb\n", 3) == 0)
-		push(b, a);
-	else
-	{
-		cleanup(a, b, numbers);
-		ft_putendl_fd("Error", 2);
-		exit(1);
-	}
-}
+	int	i;
 
-void	run_instructions(t_stack *a, t_stack *b, char **numbers)
-{
-	char	*instruction;
-
-	while (1)
+	i = 0;
+	while (i < stack->size - 1)
 	{
-		instruction = get_next_line(0);
-		if (!instruction)
-			break ;
-		execute_instruction(instruction, a, b, numbers);
-		free(instruction);
+		if (stack->arr[i] > stack->arr[i + 1])
+			return (0);
+		i++;
 	}
+	return (1);
 }
 
 int	main(int argc, char **argv)
