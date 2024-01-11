@@ -6,7 +6,7 @@
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 09:50:27 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/11 10:07:48 by obenchkr         ###   ########.fr       */
+/*   Updated: 2024/01/11 10:14:33 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,3 @@ void	reverse_rotate(t_stack *stack)
 	}
 	stack->arr[i] = temp;
 }
-

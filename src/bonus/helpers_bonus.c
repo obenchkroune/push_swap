@@ -6,7 +6,7 @@
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 09:56:58 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/11 10:07:45 by obenchkr         ###   ########.fr       */
+/*   Updated: 2024/01/11 10:12:23 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,3 @@ void	*malloc_check(void *ptr, t_stack *a, t_stack *b, int _exit)
 	}
 	return (ptr);
 }
-

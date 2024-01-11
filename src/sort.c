@@ -6,7 +6,7 @@
 /*   By: obenchkr <obenchkr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 15:18:46 by obenchkr          #+#    #+#             */
-/*   Updated: 2024/01/10 14:59:51 by obenchkr         ###   ########.fr       */
+/*   Updated: 2024/01/11 10:15:04 by obenchkr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	sort_tiny(t_stack *a, t_stack *b)
 		sort_3(a);
 	while (b->size > 0)
 		rotate_push_a(a, b);
-	
 }
 
 void	sort_stack(t_stack *a, t_stack *b)
